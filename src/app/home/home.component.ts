@@ -9,11 +9,14 @@ import { Subscription, Observer } from 'rxjs/Rx';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-
+secondObservable: Subscription;
 customObservable: Subscription;
+varible: Subscription;
   ngOnDestroy(): void {
-  this.customObservable.unsubscribe()
+  this.customObservable.unsubscribe();
+  this.secondObservable.unsubscribe()
   }
+  
   constructor() { }
 
   ngOnInit() {
@@ -32,7 +35,7 @@ customObservable: Subscription;
   }, 4000)
 })
 
-secondObservable.subscribe(
+this.secondObservable = secondObservable.subscribe(
   (data: string) => {
     console.log(data);
   }
